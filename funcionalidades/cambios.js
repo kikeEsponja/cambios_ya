@@ -68,3 +68,24 @@ if(fecha){
     let opciones = { year: 'numeric', month: 'long', day: 'numeric' };
     fecha.textContent = fechaActual.toLocaleDateString('es-ES', opciones);
 }
+let tasa = document.getElementById('tasa');
+if(pais && tasa){
+    pais.addEventListener('change', () => {
+        if(pais.value === 'arg'){
+            tasa.textContent = '21%';
+        }else if(pais.value === 'bra'){
+            tasa.textContent = '18%';
+        }else if(pais.value === 'chi'){
+            tasa.textContent = '19%';
+        }else if(pais.value === 'col'){
+            tasa.textContent = '19%';
+        }else if(pais.value === 'ven'){
+            tasa.textContent = '16%';
+        }else{
+            tasa.textContent = '';
+        }
+    });
+    if(pais.value ){
+        pais.dispatchEvent(new Event('change')); // Dispara el evento para establecer la tasa al cargar
+    }
+}
