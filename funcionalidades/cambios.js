@@ -98,3 +98,10 @@ if(fin){
         window.location.href = 'https://wa.me/+5491157335475?text=Hola,%20estoy%20interesado%20en%20contactarte.';
     });
 }
+
+let volver = document.getElementById('volver');
+if(volver){
+    volver.addEventListener('click', () => {
+        window.history.back();
+    });
+}
