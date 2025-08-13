@@ -1,5 +1,5 @@
 let ingresar = document.getElementById("ingresar");
-let formulario = document.getElementById("formulario");
+//let formulario = document.getElementById("formulario");
 let nombre = document.getElementById("nombre");
 
 if(ingresar){
@@ -18,24 +18,26 @@ if(ingresar){
 
 let resultado = document.getElementById("resultado");
 let convertir = document.getElementById("convertir");
-convertir.addEventListener("click", function(event) {
-    event.preventDefault();
-    let cantidad = parseFloat(document.getElementById("cantidad").value);
-    //let monedaOrigen = document.getElementById("monedaOrigen").value;
-    //let monedaDestino = document.getElementById("monedaDestino").value;
+if(convertir){
+    convertir.addEventListener("click", function(event) {
+        event.preventDefault();
+        let cantidad = parseFloat(document.getElementById("cantidad").value);
+        //let monedaOrigen = document.getElementById("monedaOrigen").value;
+        //let monedaDestino = document.getElementById("monedaDestino").value;
 
-    if (isNaN(cantidad) || cantidad <= 0) {
-        alert("Por favor, ingresa una cantidad válida.");
-        return;
-    }
+        if (isNaN(cantidad) || cantidad <= 0) {
+            alert("Por favor, ingresa una cantidad válida.");
+            return;
+        }
 
-    // Aquí podrías implementar la lógica de conversión de monedas
-    // Por simplicidad, asumiremos una tasa de cambio ficticia
-    let tasaCambio = 1.2; // Ejemplo de tasa de cambio
-    let resultadoConversion = cantidad * tasaCambio;
+        // Aquí podrías implementar la lógica de conversión de monedas
+        // Por simplicidad, asumiremos una tasa de cambio ficticia
+        let tasaCambio = 1.2; // Ejemplo de tasa de cambio
+        let resultadoConversion = cantidad * tasaCambio;
 
-    resultado.textContent = `Resultado: ${resultadoConversion.toFixed(2)}`;
-});
+        resultado.textContent = `Resultado: ${resultadoConversion.toFixed(2)}`;
+    });
+}
 /*let monedas = document.getElementById("monedas");
 monedas.addEventListener("change", function() {
     let monedaSeleccionada = monedas.value;
