@@ -16,38 +16,55 @@ if(ingresar){
     });
 }
 
-let resultado = document.getElementById("resultado");
-let convertir = document.getElementById("convertir");
-if(convertir){
-    convertir.addEventListener("click", function(event) {
-        event.preventDefault();
-        let cantidad = parseFloat(document.getElementById("cantidad").value);
-        //let monedaOrigen = document.getElementById("monedaOrigen").value;
-        //let monedaDestino = document.getElementById("monedaDestino").value;
+let boton = document.getElementById('calcular');
+if(boton){
+    boton.addEventListener('click', () => {
+        let resultado = document.getElementById('resultado');
+        let impuesto = 0;
 
-        if (isNaN(cantidad) || cantidad <= 0) {
-            alert("Por favor, ingresa una cantidad válida.");
-            return;
+        let pais = document.getElementById('pais');
+        if(pais.value == 'arg'){
+            impuesto = 21;
+        }else if(pais.value == 'bra'){
+            impuesto = 18;
+        }else if(pais.value == 'chi'){
+            impuesto = 19;
+        }else if(pais.value == 'col'){
+            impuesto = 19;
+        }else if(pais.value == 'ven'){
+            impuesto = 16;
+        }else{
+            resultado.textContent = 'país no válido';
         }
 
-        // Aquí podrías implementar la lógica de conversión de monedas
-        // Por simplicidad, asumiremos una tasa de cambio ficticia
-        let tasaCambio = 1.2; // Ejemplo de tasa de cambio
-        let resultadoConversion = cantidad * tasaCambio;
-
-        resultado.textContent = `Resultado: ${resultadoConversion.toFixed(2)}`;
+        let monto = parseFloat(document.getElementById('precio').value);
+        let iva = (monto * impuesto) / 100;
+        let total = (monto + iva);
+        if(!monto){
+            alert('ingrese un monto');
+        }
+        if(isNaN(total)){
+            resultado.textContent = 'cálculo no válido';
+            return;
+        }
+        resultado.innerHTML = 'el monto total es: ' + total;
     });
+
+    const reset = document.createElement('button');
+    const contenedor = document.querySelector('center');
+    reset.textContent = 'limpiar';
+
+    reset.addEventListener('click', () => {
+        let entrada = document.getElementById('precio');
+        entrada.value = '';
+        resultado.innerHTML = '';
+    });
+
+    contenedor.appendChild(reset);
 }
-/*let monedas = document.getElementById("monedas");
-monedas.addEventListener("change", function() {
-    let monedaSeleccionada = monedas.value;
-    // Aquí podrías implementar la lógica para actualizar las tasas de cambio
-    // Por simplicidad, asumiremos que las tasas son fijas
-    if (monedaSeleccionada === "USD") {
-        document.getElementById("tasaCambio").textContent = "Tasa de cambio: 1 USD = 1.2 EUR";
-    } else if (monedaSeleccionada === "EUR") {
-        document.getElementById("tasaCambio").textContent = "Tasa de cambio: 1 EUR = 0.83 USD";
-    } else {
-        document.getElementById("tasaCambio").textContent = "Tasa de cambio no disponible.";
-    }
-});*/
+let fecha = document.getElementById('fecha');
+if(fecha){
+    let fechaActual = new Date();
+    let opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+    fecha.textContent = fechaActual.toLocaleDateString('es-ES', opciones);
+}
