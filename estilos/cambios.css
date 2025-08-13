@@ -9,3 +9,13 @@ body {
     color: #333;
     padding: 20px;
 }
+.modal-content{
+    width: 70%;
+    /*height: 130vh;*/
+}
+ol{
+    text-align: left;
+}
+.datos{
+    font-size: 30px;
+}
