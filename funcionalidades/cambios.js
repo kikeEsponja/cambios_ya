@@ -62,6 +62,7 @@ reset.addEventListener('click', () => {
     let entrada = document.getElementById('precio');
     entrada.value = '';
     resultado.innerHTML = '';
+    resultado_dolar.innerHTML = '';
 });
 
 let fecha = document.getElementById('fecha');
