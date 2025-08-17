@@ -1,5 +1,6 @@
-let ingresar = document.getElementById("ingresar");
-let nombre = document.getElementById("nombre");
+// ********************************* PARA LA PRIMERA PÁGINA *********************************
+let ingresar = document.getElementById("ingresar");     // Botón para ingresar
+let nombre = document.getElementById("nombre");         // Campo de entrada para el nombre
 
 if(ingresar){
     ingresar.addEventListener("click", function(event) {
@@ -12,11 +13,12 @@ if(ingresar){
         }
     });
 }
-
+// ********************************* PARA LA SEGUNDA PÁGINA *********************************
 let boton = document.getElementById('calcular');
 if(boton){
     boton.addEventListener('click', () => {
         let resultado = document.getElementById('resultado');
+        let resultado_dolar = document.getElementById('resultado_dolar');
         let impuesto = 0;
 
         let pais = document.getElementById('pais');
@@ -44,7 +46,8 @@ if(boton){
             resultado.textContent = 'cálculo no válido';
             return;
         }
-        resultado.innerHTML = 'el monto total es: ' + total;
+        resultado.innerHTML = 'el monto total en Bolívares es: ' + total;
+        resultado_dolar.innerHTML = 'el monto total en Dólares es: ' + total / 1300;
     });
 }    
 const reset = document.createElement('button');
