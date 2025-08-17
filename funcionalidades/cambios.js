@@ -46,8 +46,8 @@ if(boton){
             resultado.textContent = 'cálculo no válido';
             return;
         }
-        resultado.innerHTML = 'el monto total en Bolívares es: ' + total;
-        resultado_dolar.innerHTML = 'el monto total en Dólares es: ' + total / 1300;
+        resultado.innerHTML = 'Monto total en Bolívares: ' + total;
+        resultado_dolar.innerHTML = 'Monto total en Dólares: ' + total / 1300;
     });
 }    
 const reset = document.createElement('button');
